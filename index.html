@@ -2,7 +2,23 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZPQZ978G8J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZPQZ978G8J');
+</script>
 <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=70216"></script>
+<script>
+  __stt.on('setLangHit', function(event) {
+    gtag('event','shuttotrans_set_lang', {
+      'shuttotrans_lang': event.lang
+    });
+  });
+</script>
 </head>
 <body>
     <p>テスト</p>
