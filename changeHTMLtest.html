@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://shutto-translation-development-ebisu.s4.amazonaws.com/trans.js?id=5621"></script>
+  </head>
+  <body class="home">
+    <h3>HTML置換テスト</h3>
+
+    <div id="changeElement">この要素が置き換わります。</div>
+    <script>
+      // 置き換え対象の要素
+      const targetElement = document.getElementById("changeElement");
+
+      if (targetElement) {
+        // 新しいHTML文字列をouterHTMLに代入
+        targetElement.outerHTML =
+          '<div id="newElement" class="highlight">要素が完全に置き換わりました！</div>';
+      } else {
+        console.error('ID "changeElement" の要素が見つかりませんでした。');
+      }
+    </script>
+  </body>
+</html>
