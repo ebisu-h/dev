@@ -9,8 +9,14 @@
 
     <div id="changeElement">この要素が置き換わります。</div>
     <script>
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function replaceElementAfterDelay() {
       // 置き換え対象の要素
       const targetElement = document.getElementById("changeElement");
+
+      await delay(1000);
 
       if (targetElement) {
         // 新しいHTML文字列をouterHTMLに代入
@@ -19,6 +25,8 @@
       } else {
         console.error('ID "changeElement" の要素が見つかりませんでした。');
       }
+    }
+    replaceElementAfterDelay();
     </script>
   </body>
 </html>
