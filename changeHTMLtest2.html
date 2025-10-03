@@ -15,30 +15,90 @@
     async function replaceElementAfterDelay() {
       // 置き換え対象の要素
       const targetElement = document.getElementById("changeElement");
-// 1. <ul> 要素を作成
-const ulElement = document.createElement('ul');
-
-// 2. id 属性を設定
-ulElement.id = 'my-list';
-
-// 3. <li> 要素のデータ
-const items = [
-    '最初のアイテム',
-    '2番目のアイテム',
-    '3番目のアイテム'
+// 生成したいニュースデータの配列（上記と同じデータを使用）
+const newsData = [
+  {
+    date: '2025年07月01日',
+    text: '当機構の賛助会員入会手続を開始しました。',
+    href: '/entry/',
+    target: '_self'
+  },
+  {
+    date: '2025年06月25日',
+    text: '当機構の賛助会員入会マニュアルを公開しました。',
+    href: '/entry/',
+    target: '_self'
+  },
+  {
+    date: '2025年06月25日',
+    text: '当機構が工業製品製造業分野の特定技能外国人の受入れに関する事業を実施する法人として経済産業大臣より登録されました。',
+    href: 'https://www.meti.go.jp/press/2025/06/20250625002/20250625002.html',
+    target: '_blank'
+  }
 ];
 
-// 4. 各データを基に <li> 要素を作成し、<ul> に追加
-items.forEach(text => {
-    // <li> 要素を作成
-    const liElement = document.createElement('li');
+// ニュースリストのUL要素を生成する関数
+function generateNewsListElement(data) {
+  const ul = document.createElement('ul');
+  ul.className = 'c-list-news';
+
+  data.forEach(item => {
+    // <li> 要素の作成
+    const li = document.createElement('li');
+    li.className = 'c-list-news__item';
+
+    // <a> 要素の作成
+    const a = document.createElement('a');
+    a.href = item.href;
+    a.className = 'c-list-news__item-link';
+    if (item.target === '_blank') {
+      a.target = '_blank';
+    }
+
+    // <div class="c-list-news__item-link-info">
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'c-list-news__item-link-info';
     
-    // テキストコンテンツを設定
-    liElement.textContent = text; 
+    // <p class="c-list-news__item-link-info-date">
+    const dateP = document.createElement('p');
+    dateP.className = 'c-list-news__item-link-info-date';
+    dateP.textContent = item.date;
     
-    // <ul> 要素に <li> 要素を追加
-    ulElement.appendChild(liElement);
-});
+    infoDiv.appendChild(dateP);
+
+    // <p class="c-list-news__item-link-text">
+    const textP = document.createElement('p');
+    textP.className = 'c-list-news__item-link-text';
+    
+    // <span> (outer)
+    const spanOuter = document.createElement('span');
+    spanOuter.className = 'c-list-news__item-link-text-span';
+    
+    // <span> (inner)
+    const spanInner = document.createElement('span');
+    // Note: HTMLのクラス名が 'clas' になっているため、そのまま設定
+    spanInner.setAttribute('clas', 'c-list-news__item-link-text-inner');
+    spanInner.textContent = item.text;
+    
+    spanOuter.appendChild(spanInner);
+    textP.appendChild(spanOuter);
+
+    // <a> に要素を結合
+    a.appendChild(infoDiv);
+    a.appendChild(textP);
+
+    // <li> に <a> を結合
+    li.appendChild(a);
+
+    // <ul> に <li> を結合
+    ul.appendChild(li);
+  });
+
+  return ul;
+}
+
+// UL要素の生成
+const ulElement = generateNewsListElement(newsData);
 
       await delay(1000);
 
