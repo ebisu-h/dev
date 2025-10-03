@@ -89,12 +89,7 @@
 			</ul>`;
 
       await delay(1000);
-  // 1. 改行 (\n) とタブ (\t) を除去
-  const cleanedElement = newElement.replace(/[\n\t]/g, '');
-
-  // 2. タグの外側にある連続する空白（スペース）を一つのスペースに置換
-  //    (HTMLのレンダリングを壊さないために、少なくとも一つのスペースを残すことが多い)
-  //    この例では、連続する複数のスペースを一つに置き換えます。
+  let cleanedElement = newElement.replace(/[\n\t]/g, '');
   cleanedElement = cleanedElement.replace(/\s{2,}/g, ' ');
 
       if (targetElement) {
