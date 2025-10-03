@@ -15,13 +15,86 @@
     async function replaceElementAfterDelay() {
       // 置き換え対象の要素
       const targetElement = document.getElementById("changeElement");
+      const newElement = '
+			<ul class="c-list-news">
+				<li class="c-list-news__item">
+
+					<a href="&#x2F;entry&#x2F;" class="c-list-news__item-link">
+
+
+						<div class="c-list-news__item-link-info">
+							<p class="c-list-news__item-link-info-date">2025年07月01日</p>
+
+
+						</div>
+
+						<p class="c-list-news__item-link-text">
+							<span class="c-list-news__item-link-text-span">
+								<span clas="c-list-news__item-link-text-inner">
+								当機構の賛助会員入会手続を開始しました。
+								</span>
+							</span>
+						</p>
+
+					</a>
+
+
+				</li>
+				<li class="c-list-news__item">
+
+					<a href="&#x2F;entry&#x2F;" class="c-list-news__item-link">
+
+
+						<div class="c-list-news__item-link-info">
+							<p class="c-list-news__item-link-info-date">2025年06月25日</p>
+
+
+						</div>
+
+						<p class="c-list-news__item-link-text">
+							<span class="c-list-news__item-link-text-span">
+								<span clas="c-list-news__item-link-text-inner">
+								当機構の賛助会員入会マニュアルを公開しました。
+								</span>
+							</span>
+						</p>
+
+					</a>
+
+
+				</li>
+				<li class="c-list-news__item">
+
+					<a href="https:&#x2F;&#x2F;www.meti.go.jp&#x2F;press&#x2F;2025&#x2F;06&#x2F;20250625002&#x2F;20250625002.html" target="_blank" class="c-list-news__item-link">
+
+
+						<div class="c-list-news__item-link-info">
+							<p class="c-list-news__item-link-info-date">2025年06月25日</p>
+
+
+						</div>
+
+						<p class="c-list-news__item-link-text">
+							<span class="c-list-news__item-link-text-span">
+								<span clas="c-list-news__item-link-text-inner">
+								当機構が工業製品製造業分野の特定技能外国人の受入れに関する事業を実施する法人として経済産業大臣より登録されました。
+								</span>
+							</span>
+						</p>
+
+					</a>
+
+
+				</li>
+			</ul>'
 
       await delay(1000);
 
       if (targetElement) {
         // 新しいHTML文字列をouterHTMLに代入
-        targetElement.outerHTML =
-          '<div id="newElement" class="highlight">要素が完全に置き換わりました！</div>';
+        // targetElement.outerHTML =
+        //  '<div id="newElement" class="highlight">要素が完全に置き換わりました！</div>';
+        targetElement.outerHTML = newElement;
       } else {
         console.error('ID "changeElement" の要素が見つかりませんでした。');
       }
