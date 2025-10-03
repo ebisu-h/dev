@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=77409"></script>
+  </head>
+  <body class="home">
+    <h3>HTML置換テスト</h3>
+
+    <div id="changeElement">この要素が置き換わります。</div>
+    <script>
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function replaceElementAfterDelay() {
+      // 置き換え対象の要素
+      const targetElement = document.getElementById("changeElement");
+// 1. <ul> 要素を作成
+const ulElement = document.createElement('ul');
+
+// 2. id 属性を設定
+ulElement.id = 'my-list';
+
+// 3. <li> 要素のデータ
+const items = [
+    '最初のアイテム',
+    '2番目のアイテム',
+    '3番目のアイテム'
+];
+
+// 4. 各データを基に <li> 要素を作成し、<ul> に追加
+items.forEach(text => {
+    // <li> 要素を作成
+    const liElement = document.createElement('li');
+    
+    // テキストコンテンツを設定
+    liElement.textContent = text; 
+    
+    // <ul> 要素に <li> 要素を追加
+    ulElement.appendChild(liElement);
+});
+
+      await delay(1000);
+
+      if (targetElement) {
+        // 新しいHTML文字列をouterHTMLに代入
+        // targetElement.outerHTML =
+        //  '<div id="newElement" class="highlight">要素が完全に置き換わりました！</div>';
+        targetElement.outerHTML = ulElement;
+      } else {
+        console.error('ID "changeElement" の要素が見つかりませんでした。');
+      }
+    }
+    replaceElementAfterDelay();
+    </script>
+  </body>
+</html>
