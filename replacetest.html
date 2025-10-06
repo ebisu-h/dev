@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=77409"></script>
+  </head>
+  <body class="home">
+    <h3>HTML置換テスト</h3>
+
+    <div id="changeElement">この要素が置き換わります。</div>
+    <script>
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function replaceElementAfterDelay() {
+      // 置き換え対象の要素
+      const targetElement = document.getElementById("changeElement");
+// 生成したいニュースデータの配列（上記と同じデータを使用）
+const newsData = [
+  {
+    date: '2025年07月01日',
+    text: '当機構の賛助会員入会手続を開始しました。',
+    href: '/entry/',
+    target: '_self'
+  },
+  {
+    date: '2025年06月25日',
+    text: '当機構の賛助会員入会マニュアルを公開しました。',
+    href: '/entry/',
+    target: '_self'
+  },
+  {
+    date: '2025年06月25日',
+    text: '当機構が工業製品製造業分野の特定技能外国人の受入れに関する事業を実施する法人として経済産業大臣より登録されました。',
+    href: 'https://www.meti.go.jp/press/2025/06/20250625002/20250625002.html',
+    target: '_blank'
+  }
+];
+
+// ニュースリストのUL要素を生成する関数
+function generateNewsListElement(data) {
+  const ul = document.createElement('ul');
+  ul.className = 'c-list-news';
+
+  data.forEach(item => {
+    // <li> 要素の作成
+    const li = document.createElement('li');
+    li.className = 'c-list-news__item';
+
+    // <a> 要素の作成
+    const a = document.createElement('a');
+    a.href = item.href;
+    a.className = 'c-list-news__item-link';
+    if (item.target === '_blank') {
+      a.target = '_blank';
+    }
+
+    // <div class="c-list-news__item-link-info">
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'c-list-news__item-link-info';
+    
+    // <p class="c-list-news__item-link-info-date">
+    const dateP = document.createElement('p');
+    dateP.className = 'c-list-news__item-link-info-date';
+    dateP.textContent = item.date;
+    
+    infoDiv.appendChild(dateP);
+
+    // <p class="c-list-news__item-link-text">
+    const textP = document.createElement('p');
+    textP.className = 'c-list-news__item-link-text';
+    
+    // <span> (outer)
+    const spanOuter = document.createElement('span');
+    spanOuter.className = 'c-list-news__item-link-text-span';
+    
+    // <span> (inner)
+    const spanInner = document.createElement('span');
+    // Note: HTMLのクラス名が 'clas' になっているため、そのまま設定
+    spanInner.setAttribute('clas', 'c-list-news__item-link-text-inner');
+    spanInner.textContent = item.text;
+    
+    spanOuter.appendChild(spanInner);
+    textP.appendChild(spanOuter);
+
+    // <a> に要素を結合
+    a.appendChild(infoDiv);
+    a.appendChild(textP);
+
+    // <li> に <a> を結合
+    li.appendChild(a);
+
+    // <ul> に <li> を結合
+    ul.appendChild(li);
+  });
+
+  return ul;
+}
+
+// UL要素の生成
+const ulElement = generateNewsListElement(newsData);
+
+      await delay(1000);
+
+      if (targetElement) {
+        // 新しいHTML文字列をouterHTMLに代入
+        // targetElement.outerHTML =
+        //  '<div id="newElement" class="highlight">要素が完全に置き換わりました！</div>';
+        //targetElement.outerHTML = newElement;
+        targetElement.replaceWith(ulElement);
+      } else {
+        console.error('ID "changeElement" の要素が見つかりませんでした。');
+      }
+    }
+    replaceElementAfterDelay();
+    </script>
+  </body>
+</html>
