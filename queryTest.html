@@ -3,38 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>クエリパラメータチェック</title>
+    <title>クエリパラメータによる文言変更</title>
     <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=79488"></script>
     <script>
         window.onload = function() {
             // URLのクエリパラメータを取得
             const urlParams = new URLSearchParams(window.location.search);
-            
-            // クエリパラメータが存在するかチェック
+
+            // DOM要素を取得
+            const messageElement = document.getElementById('message');
+
+            // クエリパラメータが「query」として存在するかをチェック
             if (urlParams.has('query')) {
-                // クエリパラメータがある場合の処理
-                document.getElementById('withQuery').style.display = 'block';
-                document.getElementById('withoutQuery').style.display = 'none';
+                // クエリパラメータが存在する場合の文言を設定
+                messageElement.textContent = 'クエリパラメータが存在します！';
             } else {
-                // クエリパラメータがない場合の処理
-                document.getElementById('withQuery').style.display = 'none';
-                document.getElementById('withoutQuery').style.display = 'block';
+                // クエリパラメータが存在しない場合の文言を設定
+                messageElement.textContent = 'クエリパラメータは存在しません。';
             }
         };
     </script>
 </head>
 <body>
 
-    <div id="withQuery" style="display: none;">
-        <h1>クエリパラメータが存在します！</h1>
-        <p>URLに「query」パラメータが含まれています。</p>
-    </div>
-
-    <div id="withoutQuery" style="display: none;">
-        <h1>クエリパラメータがありません。</h1>
-        <p>URLに「query」パラメータが含まれていません。</p>
-    </div>
+    <h1 id="message">読み込み中...</h1>
 
 </body>
 </html>
-
