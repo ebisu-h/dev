@@ -5,6 +5,12 @@
 <title>videoタグテストページ</title>
 <!-- 導入タグ -->
 <script src="https://shutto-translation-development3.s3.amazonaws.com/trans.js?id=5629"></script>
+<script>
+__stt.on('selectLang', function(event) {
+  const videoElement = document.querySelector('video');
+  videoElement.load();
+});
+</script>
 <style>
 #firstimage {
     position: relative;
@@ -43,7 +49,7 @@
 <body>
     <p>videoタグテスト</p>
     <section id="firstimage">
-	<video data-stt-ignore id="bg-video" src="https://ebisu-h.github.io/dev/img/sample-10s-5mb.mp4" playsinline="" autoplay="" loop="" muted=""></video>
+	<video id="bg-video" src="https://ebisu-h.github.io/dev/img/sample-10s-5mb.mp4" playsinline="" autoplay="" loop="" muted=""></video>
 	<h1 id="mainttl"><img src="img/test01.png" style="width: 200px" alt="テスト"><br>Hotel</h1>
 	<p class="scrldwn"><a href="#reservation">scroll</a></p>
     </section>
