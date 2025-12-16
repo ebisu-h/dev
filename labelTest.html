@@ -5,24 +5,29 @@
 <title>テストページ</title>
 <!-- 導入タグ -->
 <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=79521"></script>
-<script>
-$(function () {
-  let tabs = $('.tab');
-  $('.tab').on('click', function () {
-    $('.is-active').removeClass('is-active');
-    $(this).addClass('is-active');
-    const index = tabs.index(this);
-    $('.content').removeClass('show').eq(index).addClass('show');
-  });
-});
-</script>
 <style>
+/* すべてのコンテンツを初期状態で非表示にする */
 .content {
-  display: none;
+    display: none;
 }
 
+/* .show クラスが付与されたコンテンツを表示する */
 .content.show {
-  display: block;
+    display: block; /* または flex, grid など */
+}
+
+/* アクティブなタブを視覚的に強調する */
+.tab {
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+.tab.is-active {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ffffff; /* コンテンツと繋がっているように見せる */
+    font-weight: bold;
 }
 </style>
 </head>
@@ -49,5 +54,45 @@ $(function () {
         <h2>研究者一覧</h2>
       </div>
     </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // すべてのタブ要素とコンテンツ要素を取得
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    // タブ要素がクリックされたときの処理を設定
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            // --- 1. すべてのタブとコンテンツからアクティブ/表示クラスを削除 ---
+
+            // すべてのタブから .is-active クラスを削除
+            tabs.forEach(t => t.classList.remove('is-active'));
+            
+            // すべてのコンテンツから .show クラスを削除
+            contents.forEach(c => c.classList.remove('show'));
+
+            // --- 2. クリックされたタブと連動するコンテンツにクラスを追加 ---
+
+            // クリックされたタブ自身に .is-active クラスを追加
+            tab.classList.add('is-active');
+
+            // クリックされたタブと同じインデックスのコンテンツに .show クラスを追加
+            // indexが一致することで、<div class="tab">Tab 1</div> と 最初の <div class="content"> が連動します。
+            if (contents[index]) {
+                contents[index].classList.add('show');
+            }
+        });
+    });
+
+    // --- 初期表示の設定（オプション） ---
+    // ページロード時に最初のタブをアクティブにし、最初のコンテンツを表示する
+    if (tabs.length > 0) {
+        tabs[0].classList.add('is-active');
+    }
+    if (contents.length > 0) {
+        contents[0].classList.add('show');
+    }
+});
+</script>
 </body>
 </html>
