@@ -6,7 +6,7 @@
 <!-- 導入タグ -->
 <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=79521"></script>
 <style>
-html{
+body{
   --after-text: "税込";
 }
 .content::after{
@@ -19,7 +19,12 @@ li:nth-child(odd){
  <script>
    __stt.on('selectLang', function(event) {
 　　 var currentLang = event.lang
- //　任意のスクリプト
+     var htmlElement = document.documentElement; 
+     if(currentLang == ja){
+       htmlElement.style.setProperty('--after-text', "税込");
+     }else{
+       htmlElement.style.setProperty('--after-text', "");
+     }
  });
 </script>
 </head>
