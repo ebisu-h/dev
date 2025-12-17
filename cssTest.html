@@ -19,7 +19,7 @@ li:nth-child(odd){
  <script>
    __stt.on('selectLang', function(event) {
 　　 var currentLang = event.lang
-     var htmlElement = document.documentElement; 
+     var htmlElement = document.body; 
      if(currentLang == ja){
        htmlElement.style.setProperty('--after-text', "税込");
      }else{
