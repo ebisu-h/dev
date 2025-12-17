@@ -6,8 +6,11 @@
 <!-- 導入タグ -->
 <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=79521"></script>
 <style>
+.content{
+  --after-text: "税込";
+}
 .content::after{
-  content: "税込";
+  content: var(--after-text);
 },
 li:nth-child(odd){
   background-color: #f0f0f0;
