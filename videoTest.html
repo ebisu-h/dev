@@ -8,11 +8,20 @@
 
 <script>
 __stt.on('selectLang', function(event) {
+  const targetFile = "hosting.js";
+  const scripts = document.head.querySelectorAll('script');
+  
+  const isLoaded = Array.from(scripts).some(script => {
+    return script.src.includes(targetFile);
+  });
+
+  if (!isLoaded) {
   // const videoElement = document.querySelector('#bg-video');
   // videoElement.load();
   // videoElement.play();
   // location.replace(location.href);
-  location.reload();
+    location.reload();
+  }
 });
 </script>
 <style>
