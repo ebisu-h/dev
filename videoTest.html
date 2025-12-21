@@ -8,19 +8,14 @@
 
 <script>
 __stt.on('selectLang', function(event) {
-  const targetFile = "hosting.js";
-  const scripts = document.head.querySelectorAll('script');
-  
-  const isLoaded = Array.from(scripts).some(script => {
-    return script.src.includes(targetFile);
-  });
+  const isOriginalTopPage = () => {
+    const isDomain = window.location.hostname === 'www.example.com';
+    const isPath = window.location.pathname === '/';
+    return isDomain && isPath;
+  };
 
-  if (!isLoaded) {
-  // const videoElement = document.querySelector('#bg-video');
-  // videoElement.load();
-  // videoElement.play();
-  // location.replace(location.href);
-    location.reload();
+  if (!isOriginalTopPage) {
+    window.location.href = window.location.origin + '/';
   }
 });
 </script>
