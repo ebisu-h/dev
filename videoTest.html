@@ -12,17 +12,13 @@ __stt.on('selectLang', function(event) {
   const rootPath = '/dev/videoTest.html';
 
   const isOriginalTopPage = () => {
-    const isDomain = window.location.hostname === originalDomain;
-    const isPath = window.location.pathname === rootPath;
+    const isDomain = location.hostname === originalDomain;
+    const isPath = location.pathname === rootPath;
     return isDomain && isPath;
   };
 
-  if (!isOriginalTopPage()) {
+  if (isOriginalTopPage()) {
     const rootRedirectUrl = `https://${originalDomain}${rootPath}`
-    console.log("rootRedirectUrl");
-    console.log(rootRedirectUrl);
-    console.log("window");
-    console.log(window.location.href);
     if (location.href === rootRedirectUrl) {
       location.reload();
     } else {
