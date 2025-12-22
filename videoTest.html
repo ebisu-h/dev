@@ -21,12 +21,12 @@ __stt.on('selectLang', function(event) {
     const rootRedirectUrl = `https://${originalDomain}${rootPath}`
     console.log("rootRedirectUrl");
     console.log(rootRedirectUrl);
-    console.log("window")
+    console.log("window");
     console.log(window.location.href);
-    if (window.location.href === rootRedirectUrl) {
-      window.location.reload();
+    if (location.href === rootRedirectUrl) {
+      location.reload();
     } else {
-      window.location.href = rootRedirectUrl;
+      location.href = rootRedirectUrl;
     }
   }
 });
