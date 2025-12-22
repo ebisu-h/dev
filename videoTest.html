@@ -11,19 +11,14 @@ __stt.on('selectLang', function(event) {
   const originalDomain = 'ebisu-h.github.io';
   const rootPath = '/dev/videoTest.html';
 
-console.log('現在のhostname:', `"${window.location.hostname}"`);
-console.log('期待するhostname:', `"${originalDomain}"`);
-console.log('現在のpath:', `"${window.location.pathname}"`);
-console.log('期待するpath:', `"${rootPath}"`);
-console.log(typeof originalDomain);
-console.log(typeof rootPath);
-
   const isOriginalTopPage = () => {
     const isDomain = window.location.hostname === originalDomain;
     const isPath = window.location.pathname === rootPath;
+    console.log(isDomain && isPath);
     return isDomain && isPath;
   };
 
+  console.log(!isOriginalTopPage)
   if (!isOriginalTopPage) {
     const rootRedirectUrl = `https://${originalDomain}${rootPath}`
     if (window.location.href == rootRedirectUrl) {
