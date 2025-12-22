@@ -15,6 +15,8 @@ console.log('現在のhostname:', `"${window.location.hostname}"`);
 console.log('期待するhostname:', `"${originalDomain}"`);
 console.log('現在のpath:', `"${window.location.pathname}"`);
 console.log('期待するpath:', `"${rootPath}"`);
+console.log(typeof originalDomain);
+console.log(typeof rootPath);
 
   const isOriginalTopPage = () => {
     const isDomain = window.location.hostname === originalDomain;
