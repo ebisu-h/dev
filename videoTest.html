@@ -20,8 +20,8 @@ __stt.on('selectLang', function(event) {
   };
 
   console.log("!isOriginalTopPage");
-  console.log(!isOriginalTopPage)
-  if (!isOriginalTopPage) {
+  console.log(!isOriginalTopPage())
+  if (!isOriginalTopPage()) {
     const rootRedirectUrl = `https://${originalDomain}${rootPath}`
     if (window.location.href == rootRedirectUrl) {
       window.location.reload();
