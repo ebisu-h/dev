@@ -8,14 +8,22 @@
 
 <script>
 __stt.on('selectLang', function(event) {
+  const originalDomain = 'ebisu-h.github.io';
+  const rootPath = '/dev/videoTest.html';
+
   const isOriginalTopPage = () => {
-    const isDomain = window.location.hostname === 'ebisu-h.github.io';
-    const isPath = window.location.pathname === '/dev/videoTest.html';
+    const isDomain = window.location.hostname === originalDomain;
+    const isPath = window.location.pathname === rootPath;
     return isDomain && isPath;
   };
 
   if (!isOriginalTopPage) {
-    window.location.href = window.location.origin + '/';
+    const rootRedirectUrl = `https://${originalDomain}${rootPath}`
+    if (window.location.href == rootRedirectUrl) {
+      window.location.reload();
+    } else {
+      window.location.href = rootRedirectUrl;
+    }
   }
 });
 </script>
