@@ -14,16 +14,16 @@ __stt.on('selectLang', function(event) {
   const isOriginalTopPage = () => {
     const isDomain = window.location.hostname === originalDomain;
     const isPath = window.location.pathname === rootPath;
-    console.log("isOriginalTopPage");
-    console.log(isDomain && isPath);
     return isDomain && isPath;
   };
 
-  console.log("!isOriginalTopPage");
-  console.log(!isOriginalTopPage())
   if (!isOriginalTopPage()) {
     const rootRedirectUrl = `https://${originalDomain}${rootPath}`
-    if (window.location.href == rootRedirectUrl) {
+    console.log("rootRedirectUrl");
+    console.log(rootRedirectUrl);
+    console.log("window")
+    console.log(window.location.href);
+    if (window.location.href === rootRedirectUrl) {
       window.location.reload();
     } else {
       window.location.href = rootRedirectUrl;
