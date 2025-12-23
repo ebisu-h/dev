@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>videoタグテストページ</title>
+<!-- 導入タグ -->
+<script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=79521"></script>
+
+<script>
+__stt.on('selectLang', function(event) {
+  const originalDomain = 'ebisu-h.github.io';
+  // const targetPath = '/dev/videoTest.html';
+  const targetPaths = ['/dev/videoTest.html', '/dev/videoTest2.html'];
+  const targetPath = targetPaths.find(path => path === location.pathname);
+
+  // 元ドメインの対象ページかどうか
+  const isOriginalTargetPage = () => {
+    const isDomain = location.hostname === originalDomain;
+    // const isPath = location.pathname === targetPath;
+    const isPath = targetPath;
+    return isDomain && isPath;
+  };
+
+  if (isOriginalTargetPage()) {
+    const redirectUrl = `https://${originalDomain}${targetPath}`
+    if (location.href === redirectUrl) {
+      // リダイレクト先URLが一致する場合、リロードによる再読み込み
+      location.reload();
+    } else {
+      // リダイレクト先URLが一致しない場合、リダイレクトによる再読み込み
+      location.href = redirectUrl;
+    }
+  }
+});
+</script>
+<style>
+#firstimage {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+#firstimage video {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    object-fit: cover;
+}
+#firstimage #mainttl {
+    position: absolute;
+    z-index: 1;
+    width: 10em;
+    top: calc(50% - 140px);
+    left: calc(50% - 5em);
+    text-align: center;
+    color: #eee;
+    font-size: 4rem;
+    letter-spacing: 0.1em;
+    line-height: 1em;
+}
+#firstimage .scrldwn {
+    position: absolute;
+    bottom: 100px;
+    left: calc(50% - 1.25em);
+    z-index: 1;
+}
+</style>
+</head>
+<body>
+    <p>videoタグテスト２</p>
+    <section id="firstimage">
+	<video id="bg-video" src="/dev/img/sample-10s-5mb.mp4" playsinline="" autoplay="" loop="" muted=""></video>
+	<h1 id="mainttl"><img src="img/test01.png" style="width: 200px" alt="テスト"><br>Hotel</h1>
+	<p class="scrldwn"><a href="#reservation">scroll</a></p>
+    </section>
+</body>
+</html>
