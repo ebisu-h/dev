@@ -9,20 +9,26 @@
 <script>
 __stt.on('selectLang', function(event) {
   const originalDomain = 'ebisu-h.github.io';
-  const rootPath = '/dev/videoTest.html';
+  // const targetPath = '/dev/videoTest.html';
+  const targetPaths = ['/dev/videoTest.html', '/dev/cssTest.html'];
+  const targetPath = targetPaths.find(path => path === location.pathname);
 
-  const isOriginalTopPage = () => {
+  // 元ドメインの対象ページかどうか
+  const isOriginalTargetPage = () => {
     const isDomain = location.hostname === originalDomain;
-    const isPath = location.pathname === rootPath;
+    // const isPath = location.pathname === targetPath;
+    const isPath = targetPath;
     return isDomain && isPath;
   };
 
-  if (isOriginalTopPage()) {
-    const rootRedirectUrl = `https://${originalDomain}${rootPath}`
-    if (location.href === rootRedirectUrl) {
+  if (isOriginalTargetPage()) {
+    const redirectUrl = `https://${originalDomain}${targetPath}`
+    if (location.href === redirectUrl) {
+      // リダイレクト先URLが一致する場合、リロードによる再読み込み
       location.reload();
     } else {
-      location.href = rootRedirectUrl;
+      // リダイレクト先URLが一致しない場合、リダイレクトによる再読み込み
+      location.href = redirectUrl;
     }
   }
 });
