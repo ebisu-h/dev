@@ -23,7 +23,7 @@ __stt.on('selectLang', function(event) {
   };
 
   if (isOriginalTargetPage()) {
-    const redirectUrl = `https://${originalDomain}${targetPath}`
+    const redirectUrl = `https://${originalDomain}${location.pathname}`
     if (location.href === redirectUrl) {
       // リダイレクト先URLが一致する場合、リロードによる再読み込み
       location.reload();
