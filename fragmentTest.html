@@ -8,8 +8,12 @@
 <script>
 __stt.get('lang', function(lang) {
   __stt.set('lang', 'ja');
-  window.onload = () => {
+  if (document.readyState === 'complete') {
     __stt.set('lang', lang);
+  } else {
+    window.addEventListener('load', function() {
+      __stt.set('lang', lang);
+    });
   };
 });
 </script>
@@ -24,8 +28,6 @@ setTimeout(() => {
   const newP = document.createElement("p");
 
   newP.textContent = "これは新しく追加された段落です。";
-  newP.id = "my-paragraph";
-  newP.style.color = "blue"; // 青色にする
 
   document.body.appendChild(newP);
 }, 5000);
