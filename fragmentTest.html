@@ -19,5 +19,16 @@ __stt.get('lang', function(lang) {
     <a href="https://ebisu-h.github.io/dev/img/Free_Test_Data_100KB_PDF.pdf#page=2">PDF</a>
     <a href="https://ebisu-h.github.io/dev/test.html#section2">HTML</a>
     <a href="https://ebisu-h.github.io/dev/test3.html#section2">HTML</a>
+<script>
+setTimeout(() => {
+  const newP = document.createElement("p");
+
+  newP.textContent = "これは新しく追加された段落です。";
+  newP.id = "my-paragraph";
+  newP.style.color = "blue"; // 青色にする
+
+  document.body.appendChild(newP);
+}, 5000);
+</script>
 </body>
 </html>
