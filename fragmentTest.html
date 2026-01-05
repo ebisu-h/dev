@@ -5,6 +5,14 @@
 <title>PDFテストページ</title>
 <!-- 導入タグ -->
 <script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=79521"></script>
+<script>
+__stt.get('lang', function(lang) {
+  __stt.set('lang', 'ja');
+  window.onload = () => {
+    __stt.set('lang', lang);
+  };
+});
+</script>
 </head>
 <body>
     <p>PDFテスト</p>
