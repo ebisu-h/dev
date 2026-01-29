@@ -8,10 +8,17 @@
 <script>
   function check() {
     if (document.contactform.check1 && !document.contactform.check1.checked) {
-      window.alert('「プライバシーポリシーの記載事項に同意します。」にチェックを入れて下さい');
-      return false;
+      __stt.get('lang', function(lang) {
+        if (lang == 'ja'){
+          text = '「プライバシーポリシーの記載事項に同意します。」にチェックを入れて下さい';
+        } else {
+          text = 'check「I agree to the privacy policy.」';
+        }
+        window.alert(text);
+        return false;
+      });
     }
-  }
+  }    
 </script>
 </head>
 <body>
