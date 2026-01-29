@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>アラートテストページ</title>
+<!-- 導入タグ -->
+<script src="https://d.shutto-translation.com/trans.js?id=79869"></script>
+<script>
+  function check() {
+    if (document.contactform.check1 && !document.contactform.check1.checked) {
+      window.alert('「プライバシーポリシーの記載事項に同意します。」にチェックを入れて下さい');
+      return false;
+    }
+  }
+</script>
+</head>
+<body>
+    <p>アラートテスト</p>
+    <form method="post" class="contactform" id="contactform" action="confirm/?g=1769666240" name="contactform" onsubmit="return check()" novalidate="">
+      <div class="form-btn">
+          <div class="form-check">
+            <label><input type="checkbox" name="check1" value="ok"><span> プライバシーポリシーの記載事項に同意します。</span></label>
+          </div>
+
+          <button id="btnConfirm" class="c-btn c-btn--blue c-btn--big"><span>⼊⼒内容を確認する</span></button>
+          <input type="hidden" name="_csrf" value="a8164b751a33f71b9e5e67992db4fecddb2f5d644cb397fb5aa2ec96c856e617">
+          <input type="hidden" name="actionFlag" value="confirm">
+      </div>
+    </form>
+</body>
+</html>
