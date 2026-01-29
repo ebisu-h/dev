@@ -6,14 +6,14 @@
 <!-- 導入タグ -->
 <script src="https://d.shutto-translation.com/trans.js?id=79869"></script>
 <script>
-  function check() {
-    if (document.contactform.check1 && !document.contactform.check1.checked) {
       __stt.get('lang', function(lang) {
         if (lang == 'ja'){
           text = '「プライバシーポリシーの記載事項に同意します。」にチェックを入れて下さい';
         } else {
           text = 'check「I agree to the privacy policy.」';
         }
+  function check() {
+    if (document.contactform.check1 && !document.contactform.check1.checked) {
         window.alert(text);
         return false;
       });
