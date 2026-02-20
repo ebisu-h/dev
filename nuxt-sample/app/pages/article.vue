@@ -1,7 +1,7 @@
-<script>
-export default {
-  layout: 'default',
-};
+<script setup lang="ts">
+definePageMeta({
+  layout: "default",
+});
 </script>
 
 <template lang="pug">

@@ -1,0 +1,19 @@
+services:
+  nuxt-app:
+    image: node:20-slim
+    container_name: nuxt_sample_app
+    # ワーキングディレクトリの設定
+    working_dir: /src
+    # ローカルのファイルをコンテナ内に同期
+    volumes:
+      - .:/src
+      - /src/node_modules # node_modulesをコンテナ専用に隔離（重要！）
+    ports:
+      - "3000:3000"
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=development
+      - ESLINT_DISABLE=true # 前述のESLintエラーを無視する設定
+    # 起動時にインストールと実行を自動で行う
+    command: sh -c "npm install && npm run dev"
+    tty: true

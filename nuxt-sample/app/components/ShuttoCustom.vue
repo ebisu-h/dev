@@ -3,7 +3,7 @@
   shutto翻訳を使用
 -->
 <script>
-import SlideUpDown from 'vue-slide-up-down';
+import SlideUpDown from "vue-slide-up-down";
 export default {
   components: {
     SlideUpDown,
@@ -16,8 +16,8 @@ export default {
   computed: {
     localButtonClass() {
       return {
-        'shutto-custom__button': true,
-        'shutto-custom__button--open': this.isOpen,
+        "shutto-custom__button": true,
+        "shutto-custom__button--open": this.isOpen,
       };
     },
   },
@@ -36,19 +36,16 @@ export default {
      * ローカル環境は除外
      */
     insertShuttoTranslation() {
-      if (process.env.NODE_ENV === 'development') {
-        return;
-      }
-
-      const targetTag = document.getElementById('shutto-translation');
-      if (targetTag && targetTag.tagName === 'SCRIPT') {
+      const targetTag = document.getElementById("shutto-translation");
+      if (targetTag && targetTag.tagName === "SCRIPT") {
         return;
       }
 
       // なければheadタグの末尾に追加
-      const shuttoTag = document.createElement('script');
-      shuttoTag.src = 'https://d.shutto-translation.com/trans.js?id=79202';
-      shuttoTag.id = 'shutto-translation';
+      const shuttoTag = document.createElement("script");
+      shuttoTag.src =
+        "https://sandbox-d.ea-shutto-translation.net/trans.js?id=80215";
+      shuttoTag.id = "shutto-translation";
       document.head.appendChild(shuttoTag);
     },
     /**
@@ -62,6 +59,7 @@ export default {
 </script>
 
 <template lang="pug">
+test
 #shutto-custom.shutto-custom
   button(@click='toggleShuttoTranslation' :class='localButtonClass')
     i.shutto-custom__button-icon.fa-solid.fa-globe
@@ -84,9 +82,3 @@ export default {
         .shutto-custom__item
           button(data-stt-changelang='zh-TW' data-stt-ignore @click='toggleShuttoTranslation') TW
 </template>
-
-<style lang="scss" scoped>
-.shutto-custom {
-  // 見た目的な箇所は省かせもらいます
-}
-</style>

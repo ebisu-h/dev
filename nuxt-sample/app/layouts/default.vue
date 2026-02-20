@@ -4,10 +4,11 @@ export default {};
 
 <template lang="pug">
 #app
-  shuttoCustom
+  ClientOnly
+    ShuttoCustom
   .container
     .header
     .inner
-      nuxt
+      slot
     .footer
 </template>
