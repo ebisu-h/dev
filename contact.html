@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script src="https://sandbox-d.ea-shutto-translation.net/trans.js?id=81073"></script>
+    <meta charset="UTF-8">
+    <title>1枚完結型お問い合わせフォーム</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        .hidden { display: none; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; }
+        .btn-area { margin-top: 20px; }
+        button { padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2>お問い合わせ</h2>
+
+    <div id="input-screen">
+        <div class="form-group">
+            <label>名前</label>
+            <input type="text" id="name" style="width:100%">
+        </div>
+        <div class="form-group">
+            <label>メッセージ</label>
+            <textarea id="message" rows="4" style="width:100%"></textarea>
+        </div>
+        <div class="btn-area">
+            <button onclick="toConfirm()">確認画面へ</button>
+        </div>
+    </div>
+
+    <div id="confirm-screen" class="hidden">
+        <p>以下の内容で送信しますか？</p>
+        <div class="form-group">
+            <label>名前:</label>
+            <p id="confirm-name"></p>
+        </div>
+        <div class="form-group">
+            <label>メッセージ:</label>
+            <p id="confirm-message"></p>
+        </div>
+        <div class="btn-area">
+            <button onclick="toInput()">修正する</button>
+            <button onclick="submitForm()" style="background: #007bff; color: white; border: none;">送信する</button>
+        </div>
+    </div>
+
+    <div id="complete-screen" class="hidden">
+        <h3>送信が完了しました！</h3>
+        <p>お問い合わせありがとうございました。</p>
+        <button onclick="location.reload()">最初に戻る</button>
+    </div>
+
+    <script>
+        const inputScreen = document.getElementById('input-screen');
+        const confirmScreen = document.getElementById('confirm-screen');
+        const completeScreen = document.getElementById('complete-screen');
+
+        // 確認画面へ移動
+        function toConfirm() {
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !message) {
+                alert("入力してください");
+                return;
+            }
+
+            document.getElementById('confirm-name').textContent = name;
+            document.getElementById('confirm-message').textContent = message;
+
+            inputScreen.classList.add('hidden');
+            confirmScreen.classList.remove('hidden');
+        }
+
+        // 入力画面へ戻る
+        function toInput() {
+            confirmScreen.classList.add('hidden');
+            inputScreen.classList.remove('hidden');
+        }
+
+        // 送信処理（擬似）
+        function submitForm() {
+            // 本来はここで fetch API などを使って API にデータを飛ばします
+            console.log("送信データ:", {
+                name: document.getElementById('name').value,
+                message: document.getElementById('message').value
+            });
+
+            confirmScreen.classList.add('hidden');
+            completeScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
